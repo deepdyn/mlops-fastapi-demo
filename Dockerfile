@@ -24,4 +24,7 @@ ENV PORT=8080
 EXPOSE 8080
 
 # Start the server
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+#CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"] # this was for local implementation
+# this is for cloud run
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}"] 
+
